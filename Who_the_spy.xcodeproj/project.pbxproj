@@ -19,6 +19,15 @@
 		02CA63C918F41FF000D6E32A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02CA63B118F41FF000D6E32A /* UIKit.framework */; };
 		02CA63D118F41FF000D6E32A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02CA63CF18F41FF000D6E32A /* InfoPlist.strings */; };
 		02CA63D318F41FF000D6E32A /* Who_the_spyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CA63D218F41FF000D6E32A /* Who_the_spyTests.m */; };
+		02CA63DD18F4200300D6E32A /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02CA63DC18F4200300D6E32A /* libsqlite3.0.dylib */; };
+		02CA63F218F420CF00D6E32A /* GameConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CA63E418F420CF00D6E32A /* GameConfigViewController.m */; };
+		02CA63F318F420CF00D6E32A /* GameConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02CA63E518F420CF00D6E32A /* GameConfigViewController.xib */; };
+		02CA63F418F420CF00D6E32A /* GamePlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CA63E718F420CF00D6E32A /* GamePlayingViewController.m */; };
+		02CA63F518F420CF00D6E32A /* GamePlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02CA63E818F420CF00D6E32A /* GamePlayingViewController.xib */; };
+		02CA63F618F420CF00D6E32A /* NumberPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CA63EA18F420CF00D6E32A /* NumberPickerViewController.m */; };
+		02CA63F718F420CF00D6E32A /* WordPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CA63ED18F420CF00D6E32A /* WordPair.m */; };
+		02CA63F818F420CF00D6E32A /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02CA63F018F420CF00D6E32A /* DataManager.m */; };
+		02CA63FA18F4217B00D6E32A /* sswd.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 02CA63F918F4217B00D6E32A /* sswd.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02CA63AA18F41FF000D6E32A /* Who_the_spy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Who_the_spy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		02CA63AA18F41FF000D6E32A /* Who the spy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Who the spy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02CA63AD18F41FF000D6E32A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		02CA63AF18F41FF000D6E32A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		02CA63B118F41FF000D6E32A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -48,6 +57,20 @@
 		02CA63CE18F41FF000D6E32A /* Who_the_spyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Who_the_spyTests-Info.plist"; sourceTree = "<group>"; };
 		02CA63D018F41FF000D6E32A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		02CA63D218F41FF000D6E32A /* Who_the_spyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Who_the_spyTests.m; sourceTree = "<group>"; };
+		02CA63DC18F4200300D6E32A /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		02CA63E318F420CF00D6E32A /* GameConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfigViewController.h; sourceTree = "<group>"; };
+		02CA63E418F420CF00D6E32A /* GameConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameConfigViewController.m; sourceTree = "<group>"; };
+		02CA63E518F420CF00D6E32A /* GameConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameConfigViewController.xib; sourceTree = "<group>"; };
+		02CA63E618F420CF00D6E32A /* GamePlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GamePlayingViewController.h; sourceTree = "<group>"; };
+		02CA63E718F420CF00D6E32A /* GamePlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GamePlayingViewController.m; sourceTree = "<group>"; };
+		02CA63E818F420CF00D6E32A /* GamePlayingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GamePlayingViewController.xib; sourceTree = "<group>"; };
+		02CA63E918F420CF00D6E32A /* NumberPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberPickerViewController.h; sourceTree = "<group>"; };
+		02CA63EA18F420CF00D6E32A /* NumberPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberPickerViewController.m; sourceTree = "<group>"; };
+		02CA63EC18F420CF00D6E32A /* WordPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordPair.h; sourceTree = "<group>"; };
+		02CA63ED18F420CF00D6E32A /* WordPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordPair.m; sourceTree = "<group>"; };
+		02CA63EF18F420CF00D6E32A /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		02CA63F018F420CF00D6E32A /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		02CA63F918F4217B00D6E32A /* sswd.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = sswd.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02CA63DD18F4200300D6E32A /* libsqlite3.0.dylib in Frameworks */,
 				02CA63B018F41FF000D6E32A /* CoreGraphics.framework in Frameworks */,
 				02CA63B218F41FF000D6E32A /* UIKit.framework in Frameworks */,
 				02CA63AE18F41FF000D6E32A /* Foundation.framework in Frameworks */,
@@ -87,7 +111,7 @@
 		02CA63AB18F41FF000D6E32A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				02CA63AA18F41FF000D6E32A /* Who_the_spy.app */,
+				02CA63AA18F41FF000D6E32A /* Who the spy.app */,
 				02CA63C518F41FF000D6E32A /* Who_the_spyTests.xctest */,
 			);
 			name = Products;
@@ -96,6 +120,7 @@
 		02CA63AC18F41FF000D6E32A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02CA63DC18F4200300D6E32A /* libsqlite3.0.dylib */,
 				02CA63AD18F41FF000D6E32A /* Foundation.framework */,
 				02CA63AF18F41FF000D6E32A /* CoreGraphics.framework */,
 				02CA63B118F41FF000D6E32A /* UIKit.framework */,
@@ -109,6 +134,10 @@
 			children = (
 				02CA63BC18F41FF000D6E32A /* AppDelegate.h */,
 				02CA63BD18F41FF000D6E32A /* AppDelegate.m */,
+				02CA63EE18F420CF00D6E32A /* Service */,
+				02CA63E218F420CF00D6E32A /* Controller */,
+				02CA63F118F420CF00D6E32A /* View */,
+				02CA63EB18F420CF00D6E32A /* Model */,
 				02CA63BF18F41FF000D6E32A /* Images.xcassets */,
 				02CA63B418F41FF000D6E32A /* Supporting Files */,
 			);
@@ -118,6 +147,7 @@
 		02CA63B418F41FF000D6E32A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				02CA63F918F4217B00D6E32A /* sswd.sqlite */,
 				02CA63B518F41FF000D6E32A /* Who_the_spy-Info.plist */,
 				02CA63B618F41FF000D6E32A /* InfoPlist.strings */,
 				02CA63B918F41FF000D6E32A /* main.m */,
@@ -144,6 +174,46 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		02CA63E218F420CF00D6E32A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				02CA63E318F420CF00D6E32A /* GameConfigViewController.h */,
+				02CA63E418F420CF00D6E32A /* GameConfigViewController.m */,
+				02CA63E518F420CF00D6E32A /* GameConfigViewController.xib */,
+				02CA63E618F420CF00D6E32A /* GamePlayingViewController.h */,
+				02CA63E718F420CF00D6E32A /* GamePlayingViewController.m */,
+				02CA63E818F420CF00D6E32A /* GamePlayingViewController.xib */,
+				02CA63E918F420CF00D6E32A /* NumberPickerViewController.h */,
+				02CA63EA18F420CF00D6E32A /* NumberPickerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		02CA63EB18F420CF00D6E32A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02CA63EC18F420CF00D6E32A /* WordPair.h */,
+				02CA63ED18F420CF00D6E32A /* WordPair.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02CA63EE18F420CF00D6E32A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				02CA63EF18F420CF00D6E32A /* DataManager.h */,
+				02CA63F018F420CF00D6E32A /* DataManager.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		02CA63F118F420CF00D6E32A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -161,7 +231,7 @@
 			);
 			name = Who_the_spy;
 			productName = Who_the_spy;
-			productReference = 02CA63AA18F41FF000D6E32A /* Who_the_spy.app */;
+			productReference = 02CA63AA18F41FF000D6E32A /* Who the spy.app */;
 			productType = "com.apple.product-type.application";
 		};
 		02CA63C418F41FF000D6E32A /* Who_the_spyTests */ = {
@@ -219,8 +289,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02CA63F318F420CF00D6E32A /* GameConfigViewController.xib in Resources */,
 				02CA63B818F41FF000D6E32A /* InfoPlist.strings in Resources */,
+				02CA63FA18F4217B00D6E32A /* sswd.sqlite in Resources */,
 				02CA63C018F41FF000D6E32A /* Images.xcassets in Resources */,
+				02CA63F518F420CF00D6E32A /* GamePlayingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +313,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				02CA63BE18F41FF000D6E32A /* AppDelegate.m in Sources */,
+				02CA63F618F420CF00D6E32A /* NumberPickerViewController.m in Sources */,
+				02CA63F818F420CF00D6E32A /* DataManager.m in Sources */,
+				02CA63F218F420CF00D6E32A /* GameConfigViewController.m in Sources */,
+				02CA63F718F420CF00D6E32A /* WordPair.m in Sources */,
 				02CA63BA18F41FF000D6E32A /* main.m in Sources */,
+				02CA63F418F420CF00D6E32A /* GamePlayingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +438,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Who_the_spy/Who_the_spy-Prefix.pch";
 				INFOPLIST_FILE = "Who_the_spy/Who_the_spy-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "Who the spy";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -373,7 +452,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Who_the_spy/Who_the_spy-Prefix.pch";
 				INFOPLIST_FILE = "Who_the_spy/Who_the_spy-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "Who the spy";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

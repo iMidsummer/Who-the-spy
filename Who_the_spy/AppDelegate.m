@@ -1,21 +1,41 @@
 //
 //  AppDelegate.m
-//  Who_the_spy
+//  Who the spy
 //
-//  Created by charles wong on 14-4-8.
+//  Created by charles wong on 14-4-7.
 //  Copyright (c) 2014年 charles wong. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "GameConfigViewController.h"
+#import "DataManager.h"
+#import "WordPair.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    BOOL isNotFirstTimeLoad = [[NSUserDefaults standardUserDefaults] boolForKey:@"isNotFirstTimeLoad"];
+    if(!isNotFirstTimeLoad)
+    {
+        NSString * sqliteBundlePath = [[NSBundle mainBundle] pathForResource:@"sswd" ofType:@"sqlite"];
+        NSString * documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask ,YES) objectAtIndex:0];
+        NSString * sqliteDocPath = [documentPath stringByAppendingPathComponent:@"sswd.sqlite"];
+        NSError * error;
+        [[NSFileManager defaultManager] copyItemAtPath:sqliteBundlePath toPath:sqliteDocPath error:&error];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isNotFirstTimeLoad"];
+    }
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    UINavigationController * navigationController = [[UINavigationController alloc] init];
+    self.window.rootViewController = navigationController;
+    [navigationController pushViewController:[[GameConfigViewController alloc] init] animated:NO];
+    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

@@ -1,8 +1,8 @@
 //
 //  main.m
-//  Who_the_spy
+//  Who the spy
 //
-//  Created by charles wong on 14-4-8.
+//  Created by charles wong on 14-4-7.
 //  Copyright (c) 2014年 charles wong. All rights reserved.
 //
 
