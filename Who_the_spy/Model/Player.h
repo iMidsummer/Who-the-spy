@@ -20,6 +20,7 @@ typedef enum
 @property (nonatomic, assign) int ID;
 @property (nonatomic, assign) PlayerRole role;
 @property (nonatomic, copy) NSString * wordInHand;
+@property (nonatomic, copy) NSString * roleImage;
 
 - (id)initWithID:(int)ID Role:(int)role Word:(NSString *)word;
 

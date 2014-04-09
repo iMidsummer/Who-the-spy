@@ -42,6 +42,7 @@
         self.totalPlayerNum = totalPlayerNum;
         self.spyNum = spyNum;
         self.whiteBoardNum = whiteBoardNum;
+        self.loseNum = loseNum;
         [self resetGame];
     }
     return self;
@@ -52,6 +53,7 @@
     //select a word pair
     NSArray * wordPairs = [[DataManager sharedManager] wordPairs];
     int pairIndex = arc4random() % [wordPairs count];
+    pairIndex = 0;
     WordPair * selectedWordPair = wordPairs[pairIndex];
     
     //decide spy and civilian words
@@ -96,7 +98,7 @@
             [tmpRoleArray addObject:[[Player alloc] initWithID:i+1 Role:PR_Civilian Word:self.civilianWord]];
     }
     self.allPlayers = [tmpRoleArray copy];
-    self.playersAliveArray = [tmpRoleArray copy];
+    self.playersAliveArray = [NSMutableArray arrayWithArray:tmpRoleArray];
     
     //init other params
     self.gameState = SG_Init_Done;
@@ -132,7 +134,7 @@
             NSLog(@"Error playerIndex in killPlayerAtIndex (%d/%d)", playerIndex, self.playersAliveArray.count);
             return nil;
         }
-        killedPlayer = [[self.playersAliveArray objectAtIndex:playerIndex] copy];
+        killedPlayer = [self.playersAliveArray objectAtIndex:playerIndex];
         [self.playersAliveArray removeObjectAtIndex:playerIndex];
         
         //update game statistics
@@ -141,7 +143,7 @@
         else if(killedPlayer.role == PR_Spy)
             self.spyLeftNum--;
         else if(killedPlayer.role == PR_WhiteBoard)
-            self.whiteBoardNum--;
+            self.whiteBoardLeftNum--;
         
         if((self.spyLeftNum + self.whiteBoardNum) == 0)
             self.gameState = SG_Win;
@@ -157,9 +159,29 @@
     return self.allPlayers;
 }
 
+- (NSArray *)alivePlayersInfo
+{
+    return self.playersAliveArray;
+}
+
 - (int)totalPlayersNum
 {
     return self.totalPlayerNum;
+}
+
+- (int)playersAliveNum
+{
+    return self.playersAliveArray.count;
+}
+
+- (int)spyAliveNum
+{
+    return self.spyLeftNum;
+}
+
+- (int)whileBoardAliveNum
+{
+    return self.whiteBoardLeftNum;
 }
 
 - (GameState)currentGameState

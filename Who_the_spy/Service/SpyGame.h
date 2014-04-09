@@ -23,8 +23,12 @@ typedef enum
 - (id)initWithTotalPlayersNum:(int)totalPlayerNum SpyNum:(int)spyNum whiteBoardsNum:(int)whiteBoardNum LoseNum:(int)loseNum;
 - (NSString *)wordForPlayerAtIndex:(int)playerIndex;
 - (Player *)killPlayerAtIndex:(int)playerIndex;
-- (NSArray *)allPlayers;
+- (NSArray *)allPlayersInfo;
+- (NSArray *)alivePlayersInfo;
 - (int)totalPlayersNum;
+- (int)playersAliveNum;
+- (int)spyAliveNum;
+- (int)whileBoardAliveNum;
 - (GameState)currentGameState;
 
 @end

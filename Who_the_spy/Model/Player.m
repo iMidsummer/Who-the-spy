@@ -17,6 +17,13 @@
         self.ID = ID;
         self.role = role;
         self.wordInHand = word;
+        if(role == PR_Civilian)
+            self.roleImage = @"goodguy.png";
+        else if(role == PR_Spy)
+            self.roleImage = @"spy.png";
+        else
+            self.roleImage = @"white.png";
+            
     }
     return self;
 }
