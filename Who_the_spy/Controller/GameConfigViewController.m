@@ -8,6 +8,7 @@
 
 #import "GameConfigViewController.h"
 #import "NumberPickerViewController.h"
+#import "GamePlayingViewController.h"
 
 @interface GameConfigViewController ()<UITableViewDataSource, UITableViewDelegate, NumberPickerDelegate>
 
@@ -66,12 +67,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma -mark interaction
-- (IBAction)onStartGameBtnClicked:(id)sender
-{
-    NSLog(@"Clicked.\n");
-}
-
 #pragma -mark tableview delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -118,6 +113,20 @@
 {
     [self.configDict[@"values"] replaceObjectAtIndex:self.selectedRowIndex withObject:[NSNumber numberWithInt:number]];
     [self.configTableView reloadData];
+}
+
+#pragma -mark interaction
+- (IBAction)onStartGameBtnClicked:(id)sender
+{
+    int totalPlayerNum = [[self.configDict[@"values"] objectAtIndex:0] intValue];
+    int spyNum = [[self.configDict[@"values"] objectAtIndex:1] intValue];
+    int whiteboardNum = [[self.configDict[@"values"] objectAtIndex:2] intValue];;
+    int loseNum = [[self.configDict[@"values"] objectAtIndex:3] intValue];;
+    GamePlayingViewController * gamePlayingController = [[GamePlayingViewController alloc] init];
+    [gamePlayingController initGameWithTotalPlayerNum:totalPlayerNum SpyNum:spyNum whiteboardNum:whiteboardNum LoseNum:loseNum];
+    gamePlayingController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:gamePlayingController animated:YES completion:nil];
 }
 
 @end

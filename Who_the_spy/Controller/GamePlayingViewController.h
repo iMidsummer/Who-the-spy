@@ -10,4 +10,6 @@
 
 @interface GamePlayingViewController : UIViewController
 
+- (void)initGameWithTotalPlayerNum:(int)totalPlayerNum SpyNum:(int)spyNum whiteboardNum:(int)whiteboardNum LoseNum:(int)loseNum;
+
 @end

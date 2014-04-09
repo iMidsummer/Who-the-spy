@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import "GameConfigViewController.h"
-#import "DataManager.h"
-#import "WordPair.h"
 
 @implementation AppDelegate
 

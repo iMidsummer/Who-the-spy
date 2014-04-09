@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "02CA63A918F41FF000D6E32A"
-               BuildableName = "Who_the_spy.app"
+               BuildableName = "Who the spy.app"
                BlueprintName = "Who_the_spy"
                ReferencedContainer = "container:Who_the_spy.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "02CA63A918F41FF000D6E32A"
-            BuildableName = "Who_the_spy.app"
+            BuildableName = "Who the spy.app"
             BlueprintName = "Who_the_spy"
             ReferencedContainer = "container:Who_the_spy.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "02CA63A918F41FF000D6E32A"
-            BuildableName = "Who_the_spy.app"
+            BuildableName = "Who the spy.app"
             BlueprintName = "Who_the_spy"
             ReferencedContainer = "container:Who_the_spy.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "02CA63A918F41FF000D6E32A"
-            BuildableName = "Who_the_spy.app"
+            BuildableName = "Who the spy.app"
             BlueprintName = "Who_the_spy"
             ReferencedContainer = "container:Who_the_spy.xcodeproj">
          </BuildableReference>
