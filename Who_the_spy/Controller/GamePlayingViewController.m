@@ -14,7 +14,8 @@
 typedef enum
 {
     AV_ShowWord,
-    AV_ConfirmKilling
+    AV_ConfirmKilling,
+    AV_Restart
 } AlertViewType;
 
 @interface GamePlayingViewController ()<UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate, GuessWordDelegate>
@@ -299,6 +300,11 @@ typedef enum
     {
         [self showNextPreviewPlayer];
     }
+    else if(alertView.tag == AV_Restart)
+    {
+        if(buttonIndex == 1)
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
     else if(alertView.tag == AV_ConfirmKilling)
     {
         if(buttonIndex == 0)
@@ -357,8 +363,19 @@ typedef enum
 
 - (void)restartBtnClicked:(id)sender
 {
-    //[self dismissViewControllerAnimated:YES completion:nil];
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    GameState state = [self.spyGame currentGameState];
+    if(state != SG_Win && state != SG_Failed)
+    {
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@""
+                                                            message:@"确定要重新开始吗?"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:@"确定", nil];
+        alertView.tag = AV_Restart;
+        [alertView show];
+    }
+    else
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - utility
