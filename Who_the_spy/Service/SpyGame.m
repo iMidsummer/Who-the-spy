@@ -144,14 +144,32 @@
             self.spyLeftNum--;
         else if(killedPlayer.role == PR_WhiteBoard)
             self.whiteBoardLeftNum--;
-        
-        if((self.spyLeftNum + self.whiteBoardNum) == 0)
-            self.gameState = SG_Win;
-        else if(self.civilianLeftNum < 0 ||(self.spyLeftNum + self.whiteBoardLeftNum + self.civilianLeftNum) <= self.loseNum)
-            self.gameState = SG_Failed;
     }
     
     return killedPlayer;
+}
+
+- (BOOL)judgeGuessWord:(NSString *)word
+{
+    NSString * civilianWord = [self.civilianWord uppercaseString];
+    NSString * guessWord = [word uppercaseString];
+    if([guessWord isEqualToString:civilianWord])
+    {
+        self.gameState = SG_Failed;
+        return YES;
+    }
+    return NO;
+}
+
+- (void)updateGameState
+{
+  if(self.gameState != SG_Win || self.gameState != SG_Failed)
+  {
+      if((self.spyLeftNum + self.whiteBoardNum) == 0)
+          self.gameState = SG_Win;
+      if(self.civilianLeftNum < 0 ||(self.spyLeftNum + self.whiteBoardLeftNum + self.civilianLeftNum) <= self.loseNum)
+          self.gameState = SG_Failed;
+  }
 }
 
 - (NSArray *)allPlayersInfo

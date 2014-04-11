@@ -53,6 +53,8 @@
 		02CA642818F423E200D6E32A /* goodguy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CA641118F423E200D6E32A /* goodguy@2x.png */; };
 		02CA642918F423E200D6E32A /* spy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CA641218F423E200D6E32A /* spy@2x.png */; };
 		02CA642A18F423E200D6E32A /* white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CA641318F423E200D6E32A /* white@2x.png */; };
+		7FB55C5418F6DB260013D6EA /* GuessWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB55C5218F6DB260013D6EA /* GuessWordViewController.m */; };
+		7FB55C5518F6DB260013D6EA /* GuessWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB55C5318F6DB260013D6EA /* GuessWordViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,9 @@
 		02CA641118F423E200D6E32A /* goodguy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goodguy@2x.png"; sourceTree = "<group>"; };
 		02CA641218F423E200D6E32A /* spy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spy@2x.png"; sourceTree = "<group>"; };
 		02CA641318F423E200D6E32A /* white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white@2x.png"; sourceTree = "<group>"; };
+		7FB55C5118F6DB260013D6EA /* GuessWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessWordViewController.h; sourceTree = "<group>"; };
+		7FB55C5218F6DB260013D6EA /* GuessWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessWordViewController.m; sourceTree = "<group>"; };
+		7FB55C5318F6DB260013D6EA /* GuessWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuessWordViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +267,7 @@
 				02A596A718F504A400446DBE /* NumberPicker */,
 				02A596A618F5049000446DBE /* GameConfig */,
 				02A596A818F504B300446DBE /* GamePlaying */,
+				7FB55C5018F6DAEC0013D6EA /* GuessWord */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -323,6 +329,16 @@
 				02CA641318F423E200D6E32A /* white@2x.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		7FB55C5018F6DAEC0013D6EA /* GuessWord */ = {
+			isa = PBXGroup;
+			children = (
+				7FB55C5118F6DB260013D6EA /* GuessWordViewController.h */,
+				7FB55C5218F6DB260013D6EA /* GuessWordViewController.m */,
+				7FB55C5318F6DB260013D6EA /* GuessWordViewController.xib */,
+			);
+			name = GuessWord;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02CA642618F423E200D6E32A /* 8.png in Resources */,
+				7FB55C5518F6DB260013D6EA /* GuessWordViewController.xib in Resources */,
 				02CA642418F423E200D6E32A /* 6.png in Resources */,
 				02CA641D18F423E200D6E32A /* 18.png in Resources */,
 				02CA641B18F423E200D6E32A /* 16.png in Resources */,
@@ -454,6 +471,7 @@
 				02CA63F718F420CF00D6E32A /* WordPair.m in Sources */,
 				02CA63BA18F41FF000D6E32A /* main.m in Sources */,
 				02A596A518F4E8BE00446DBE /* Player.m in Sources */,
+				7FB55C5418F6DB260013D6EA /* GuessWordViewController.m in Sources */,
 				02CA63F418F420CF00D6E32A /* GamePlayingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

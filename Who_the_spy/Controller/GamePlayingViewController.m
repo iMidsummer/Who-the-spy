@@ -9,6 +9,7 @@
 #import "GamePlayingViewController.h"
 #import "SpyGame.h"
 #import "Player.h"
+#import "GuessWordViewController.h"
 
 typedef enum
 {
@@ -16,7 +17,7 @@ typedef enum
     AV_ConfirmKilling
 } AlertViewType;
 
-@interface GamePlayingViewController ()<UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface GamePlayingViewController ()<UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate, GuessWordDelegate>
 
 @property (nonatomic, strong) IBOutlet UIView * previewWordView;
 @property (nonatomic, strong) IBOutlet UIImageView * playerIDImageView;
@@ -26,6 +27,7 @@ typedef enum
 @property (nonatomic, strong) SpyGame * spyGame;
 @property (nonatomic, assign) int curPreviewPlayIndex;
 @property (nonatomic, assign) int curSelectedToKillPlayerIndex;
+@property (nonatomic, strong) Player * lastSelfExposurePlayer;
 
 - (IBAction)onShowWordBtnClicked:(id)sender;
 
@@ -60,6 +62,9 @@ typedef enum
     
     [self.playerListTableView setHidden:YES];
     [self.previewWordView setHidden:NO];
+    
+    self.navigationItem.title = @"查看词牌";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"重新开始" style:UIBarButtonItemStylePlain target:self action:@selector(restartBtnClicked:)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,6 +80,7 @@ typedef enum
 - (void)initGameWithTotalPlayerNum:(int)totalPlayerNum SpyNum:(int)spyNum whiteboardNum:(int)whiteboardNum LoseNum:(int)loseNum
 {
     self.spyGame = [[SpyGame alloc] initWithTotalPlayersNum:totalPlayerNum SpyNum:spyNum whiteBoardsNum:whiteboardNum LoseNum:loseNum];
+    
     self.curPreviewPlayIndex = 0;
     [self showNextPreviewPlayer];
 }
@@ -89,6 +95,7 @@ typedef enum
     }
     else
     {
+        self.navigationItem.title = @"票出玩家";
         [self.playerListTableView setHidden:NO];
         [self.previewWordView setHidden:YES];
         self.notifyLable.text = [NSString stringWithFormat:@"   请选择被投票最多的玩家"];
@@ -97,16 +104,19 @@ typedef enum
     }
 }
 
-- (NSString *)notificationForKilledPlayer:(Player *)killedPlayer
+- (NSString *)notificationForKilledPlayer:(Player *)killedPlayer IsSelfExposure:(BOOL)isSelfExposure
 {
     //卧底还在, 游戏继续~
     
     NSString * notifyString;
     
     if(killedPlayer.role == PR_Civilian)
-        notifyString = [NSString stringWithFormat:@"   %i号被冤死!", killedPlayer.ID];
+        if(isSelfExposure)
+            notifyString = [NSString stringWithFormat:@"   %i号是犯2群众!", killedPlayer.ID];
+        else
+            notifyString = [NSString stringWithFormat:@"   %i号被冤死!", killedPlayer.ID];
     else if(killedPlayer.role == PR_WhiteBoard)
-        notifyString = [NSString stringWithFormat:@"   %i号是白板!", killedPlayer.ID];
+            notifyString = [NSString stringWithFormat:@"   %i号是白板!", killedPlayer.ID];
     else
         notifyString = [NSString stringWithFormat:@"   %i号是卧底!", killedPlayer.ID];
     
@@ -225,6 +235,58 @@ typedef enum
     }
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([self.spyGame currentGameState] == SG_Killing)
+        return YES;
+    else
+        return NO;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"跳卧底";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GameState state  = [self.spyGame currentGameState];
+    if(state == SG_Killing)
+    {
+        if(editingStyle == UITableViewCellEditingStyleDelete)
+        {
+            Player * killedPlayer = [self.spyGame killPlayerAtIndex:indexPath.row];
+            self.lastSelfExposurePlayer = killedPlayer;
+            
+            if(killedPlayer.role == PR_Civilian)
+            {
+                [self.spyGame updateGameState];
+                NSString * notify = [self notificationForKilledPlayer:killedPlayer IsSelfExposure:YES];
+                self.notifyLable.text = notify;
+                self.curSelectedToKillPlayerIndex = -1;
+                if([self.spyGame currentGameState] == SG_Killing)
+                    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+                else
+                    [tableView reloadData];
+            }
+            else
+            {
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            }
+        }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.lastSelfExposurePlayer && self.lastSelfExposurePlayer.role != PR_Civilian)
+    {
+        GuessWordViewController * guessWordController = [[GuessWordViewController alloc] initWithPlayer:self.lastSelfExposurePlayer NumofChances:2 SpyGame:self.spyGame];
+        guessWordController.delegate = self;
+        [self.navigationController pushViewController:guessWordController animated:YES];
+    }
+}
+
 #pragma -mark alertView delegate
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
@@ -234,17 +296,42 @@ typedef enum
     }
     else if(alertView.tag == AV_ConfirmKilling)
     {
+        if(buttonIndex == 0)
+        {
+            self.curSelectedToKillPlayerIndex = -1;
+            [self.playerListTableView reloadData];
+        }
         if(buttonIndex == 1)
         {
             //confirm killing
             Player * killedPlayer = [self.spyGame killPlayerAtIndex:self.curSelectedToKillPlayerIndex];
-            NSString * notify = [self notificationForKilledPlayer:killedPlayer];
-            self.notifyLable.text = notify;
-            self.curSelectedToKillPlayerIndex = -1;
-            [self.playerListTableView reloadData];
+            if(killedPlayer.role == PR_Civilian)
+            {
+                [self.spyGame updateGameState];
+                NSString * notify = [self notificationForKilledPlayer:killedPlayer IsSelfExposure:NO];
+                self.notifyLable.text = notify;
+                self.curSelectedToKillPlayerIndex = -1;
+                [self.playerListTableView reloadData];
+            }
+            else
+            {
+                //guess word one time
+                GuessWordViewController * guessWordController = [[GuessWordViewController alloc] initWithPlayer:killedPlayer NumofChances:1 SpyGame:self.spyGame];
+                guessWordController.delegate = self;
+                [self.navigationController pushViewController:guessWordController animated:YES];
+            }
         }
         
     }
+}
+
+#pragma -mark GuessWord controller delegate
+- (void)didEndGuessing
+{
+    NSString * notify = [self notificationForKilledPlayer:self.lastSelfExposurePlayer IsSelfExposure:YES];
+    self.notifyLable.text = notify;
+    self.curSelectedToKillPlayerIndex = -1;
+    [self.playerListTableView reloadData];
 }
 
 #pragma -mark interaction
@@ -261,6 +348,12 @@ typedef enum
         alertView.tag = AV_ShowWord;
 		[alertView show];
     }
+}
+
+- (void)restartBtnClicked:(id)sender
+{
+    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - utility

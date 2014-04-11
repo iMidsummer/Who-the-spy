@@ -124,9 +124,12 @@
     int loseNum = [[self.configDict[@"values"] objectAtIndex:3] intValue];;
     GamePlayingViewController * gamePlayingController = [[GamePlayingViewController alloc] init];
     [gamePlayingController initGameWithTotalPlayerNum:totalPlayerNum SpyNum:spyNum whiteboardNum:whiteboardNum LoseNum:loseNum];
-    gamePlayingController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    //self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:gamePlayingController animated:YES completion:nil];
+    //gamePlayingController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    UINavigationController * navigationController = [[UINavigationController alloc] init];
+    navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [navigationController pushViewController:gamePlayingController animated:NO];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end
