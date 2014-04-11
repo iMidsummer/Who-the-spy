@@ -13,6 +13,7 @@
 @interface GameConfigViewController ()<UITableViewDataSource, UITableViewDelegate, NumberPickerDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView * configTableView;
+@property (nonatomic, strong) IBOutlet UIButton * startGameBtn;
 @property (nonatomic, strong) NSMutableDictionary * configDict;
 @property (nonatomic, strong) NSMutableDictionary * rangeDict;
 @property (nonatomic, assign) int selectedRowIndex;
@@ -59,6 +60,9 @@
     UIBarButtonItem * backItem = [[UIBarButtonItem alloc] init];
     backItem.title = @"返回";
     self.navigationItem.backBarButtonItem = backItem;
+    
+    UIColor * backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"vc_bg.png"]];
+    [self.view setBackgroundColor:backgroundColor];
 }
 
 - (void)didReceiveMemoryWarning

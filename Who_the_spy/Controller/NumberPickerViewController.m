@@ -51,9 +51,14 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self.tableView setBackgroundView:nil];
+    self.tableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.tableView];
     
     [self.navigationItem setTitle:self.title];
+    
+    UIColor * backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"vc_bg.png"]];
+    [self.view setBackgroundColor:backgroundColor];
 }
 
 - (void)didReceiveMemoryWarning

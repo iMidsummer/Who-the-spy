@@ -53,6 +53,8 @@
 		02CA642818F423E200D6E32A /* goodguy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CA641118F423E200D6E32A /* goodguy@2x.png */; };
 		02CA642918F423E200D6E32A /* spy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CA641218F423E200D6E32A /* spy@2x.png */; };
 		02CA642A18F423E200D6E32A /* white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02CA641318F423E200D6E32A /* white@2x.png */; };
+		02FB6F9218F784F2003F55E0 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02FB6F9018F784F2003F55E0 /* nav_bg@2x.png */; };
+		02FB6F9318F784F2003F55E0 /* vc_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 02FB6F9118F784F2003F55E0 /* vc_bg@2x.png */; };
 		7FB55C5418F6DB260013D6EA /* GuessWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB55C5218F6DB260013D6EA /* GuessWordViewController.m */; };
 		7FB55C5518F6DB260013D6EA /* GuessWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB55C5318F6DB260013D6EA /* GuessWordViewController.xib */; };
 /* End PBXBuildFile section */
@@ -125,6 +127,8 @@
 		02CA641118F423E200D6E32A /* goodguy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goodguy@2x.png"; sourceTree = "<group>"; };
 		02CA641218F423E200D6E32A /* spy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spy@2x.png"; sourceTree = "<group>"; };
 		02CA641318F423E200D6E32A /* white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white@2x.png"; sourceTree = "<group>"; };
+		02FB6F9018F784F2003F55E0 /* nav_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bg@2x.png"; sourceTree = "<group>"; };
+		02FB6F9118F784F2003F55E0 /* vc_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vc_bg@2x.png"; sourceTree = "<group>"; };
 		7FB55C5118F6DB260013D6EA /* GuessWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessWordViewController.h; sourceTree = "<group>"; };
 		7FB55C5218F6DB260013D6EA /* GuessWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessWordViewController.m; sourceTree = "<group>"; };
 		7FB55C5318F6DB260013D6EA /* GuessWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuessWordViewController.xib; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 		02CA63FC18F423E200D6E32A /* images */ = {
 			isa = PBXGroup;
 			children = (
+				02FB6F9018F784F2003F55E0 /* nav_bg@2x.png */,
+				02FB6F9118F784F2003F55E0 /* vc_bg@2x.png */,
 				02CA63FD18F423E200D6E32A /* 1.png */,
 				02CA63FE18F423E200D6E32A /* 10.png */,
 				02CA63FF18F423E200D6E32A /* 11.png */,
@@ -422,9 +428,11 @@
 				02CA641D18F423E200D6E32A /* 18.png in Resources */,
 				02CA641B18F423E200D6E32A /* 16.png in Resources */,
 				02CA641F18F423E200D6E32A /* 2.png in Resources */,
+				02FB6F9318F784F2003F55E0 /* vc_bg@2x.png in Resources */,
 				02CA641C18F423E200D6E32A /* 17.png in Resources */,
 				02CA642A18F423E200D6E32A /* white@2x.png in Resources */,
 				02CA641E18F423E200D6E32A /* 19.png in Resources */,
+				02FB6F9218F784F2003F55E0 /* nav_bg@2x.png in Resources */,
 				02CA642118F423E200D6E32A /* 3.png in Resources */,
 				02CA63F318F420CF00D6E32A /* GameConfigViewController.xib in Resources */,
 				02CA641518F423E200D6E32A /* 10.png in Resources */,

@@ -51,12 +51,16 @@ typedef enum
     self.playerListTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.playerListTableView.dataSource = self;
     self.playerListTableView.delegate = self;
+    [self.playerListTableView setBackgroundView:nil];
+    self.playerListTableView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.playerListTableView];
     
     self.notifyLable = [[UILabel alloc] init];
     self.notifyLable.frame = CGRectMake(0, 0, self.playerListTableView.bounds.size.width, 30);
     self.notifyLable.backgroundColor = [UIColor clearColor];
     self.notifyLable.textColor = [UIColor colorWithRed:76.0f/255.0f green:86.0f/255.0f blue:108.0f/255.0f alpha:1.0f];
+    self.notifyLable.font = [UIFont boldSystemFontOfSize:16.0f];
+    self.notifyLable.adjustsFontSizeToFitWidth = YES;
     [self.notifyLable setTextAlignment:NSTextAlignmentLeft];
     [self.playerListTableView setTableHeaderView:self.notifyLable];
     
@@ -65,6 +69,9 @@ typedef enum
     
     self.navigationItem.title = @"查看词牌";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"重新开始" style:UIBarButtonItemStylePlain target:self action:@selector(restartBtnClicked:)];
+    
+    UIColor * backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"vc_bg.png"]];
+    [self.view setBackgroundColor:backgroundColor];
 }
 
 - (void)didReceiveMemoryWarning

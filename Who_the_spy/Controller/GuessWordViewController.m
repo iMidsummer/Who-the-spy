@@ -51,6 +51,9 @@
     self.promptLabel.text = [self promptString:self.killedPlayer];
     self.navigationItem.title = @"猜词";
     self.navigationItem.hidesBackButton = YES;
+    
+    UIColor * backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"vc_bg.png"]];
+    [self.view setBackgroundColor:backgroundColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,7 +69,7 @@
         promptStr = [NSString stringWithFormat:@"%i号是卧底!", player.ID];
     else
         promptStr = [NSString stringWithFormat:@"%i号是白板!", player.ID];
-    promptStr = [promptStr stringByAppendingString:[NSString stringWithFormat:@"还有%i次猜词机会", self.numOfChances]];
+    promptStr = [promptStr stringByAppendingString:[NSString stringWithFormat:@"还有%i次机会", self.numOfChances]];
     return promptStr;
 }
 
