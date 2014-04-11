@@ -60,6 +60,10 @@
 		02FB6FA518F79F24003F55E0 /* Icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 02FB6FA218F79F24003F55E0 /* Icon120.png */; };
 		02FB6FA818F79FAC003F55E0 /* launch640_960.png in Resources */ = {isa = PBXBuildFile; fileRef = 02FB6FA618F79FAC003F55E0 /* launch640_960.png */; };
 		02FB6FA918F79FAC003F55E0 /* launch640_1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 02FB6FA718F79FAC003F55E0 /* launch640_1136.png */; };
+		02FB6FAC18F7B210003F55E0 /* Icon29.png in Resources */ = {isa = PBXBuildFile; fileRef = 02FB6FAA18F7B210003F55E0 /* Icon29.png */; };
+		02FB6FAD18F7B210003F55E0 /* Icon57.png in Resources */ = {isa = PBXBuildFile; fileRef = 02FB6FAB18F7B210003F55E0 /* Icon57.png */; };
+		02FB6FAF18F7B2C1003F55E0 /* launch320_480.png in Resources */ = {isa = PBXBuildFile; fileRef = 02FB6FAE18F7B2C1003F55E0 /* launch320_480.png */; };
+		02FB6FB118F7B319003F55E0 /* Icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 02FB6FB018F7B319003F55E0 /* Icon114.png */; };
 		7FB55C5418F6DB260013D6EA /* GuessWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB55C5218F6DB260013D6EA /* GuessWordViewController.m */; };
 		7FB55C5518F6DB260013D6EA /* GuessWordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FB55C5318F6DB260013D6EA /* GuessWordViewController.xib */; };
 /* End PBXBuildFile section */
@@ -139,6 +143,10 @@
 		02FB6FA218F79F24003F55E0 /* Icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon120.png; sourceTree = "<group>"; };
 		02FB6FA618F79FAC003F55E0 /* launch640_960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch640_960.png; sourceTree = "<group>"; };
 		02FB6FA718F79FAC003F55E0 /* launch640_1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch640_1136.png; sourceTree = "<group>"; };
+		02FB6FAA18F7B210003F55E0 /* Icon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon29.png; sourceTree = "<group>"; };
+		02FB6FAB18F7B210003F55E0 /* Icon57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon57.png; sourceTree = "<group>"; };
+		02FB6FAE18F7B2C1003F55E0 /* launch320_480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch320_480.png; sourceTree = "<group>"; };
+		02FB6FB018F7B319003F55E0 /* Icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon114.png; sourceTree = "<group>"; };
 		7FB55C5118F6DB260013D6EA /* GuessWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessWordViewController.h; sourceTree = "<group>"; };
 		7FB55C5218F6DB260013D6EA /* GuessWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessWordViewController.m; sourceTree = "<group>"; };
 		7FB55C5318F6DB260013D6EA /* GuessWordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuessWordViewController.xib; sourceTree = "<group>"; };
@@ -318,6 +326,10 @@
 		02CA63FC18F423E200D6E32A /* images */ = {
 			isa = PBXGroup;
 			children = (
+				02FB6FB018F7B319003F55E0 /* Icon114.png */,
+				02FB6FAE18F7B2C1003F55E0 /* launch320_480.png */,
+				02FB6FAA18F7B210003F55E0 /* Icon29.png */,
+				02FB6FAB18F7B210003F55E0 /* Icon57.png */,
 				02FB6FA618F79FAC003F55E0 /* launch640_960.png */,
 				02FB6FA718F79FAC003F55E0 /* launch640_1136.png */,
 				02FB6FA018F79F24003F55E0 /* Icon58.png */,
@@ -442,6 +454,7 @@
 				02CA642418F423E200D6E32A /* 6.png in Resources */,
 				02CA641D18F423E200D6E32A /* 18.png in Resources */,
 				02CA641B18F423E200D6E32A /* 16.png in Resources */,
+				02FB6FB118F7B319003F55E0 /* Icon114.png in Resources */,
 				02CA641F18F423E200D6E32A /* 2.png in Resources */,
 				02FB6FA418F79F24003F55E0 /* Icon80.png in Resources */,
 				02FB6F9318F784F2003F55E0 /* vc_bg@2x.png in Resources */,
@@ -452,11 +465,13 @@
 				02FB6FA518F79F24003F55E0 /* Icon120.png in Resources */,
 				02CA642118F423E200D6E32A /* 3.png in Resources */,
 				02CA63F318F420CF00D6E32A /* GameConfigViewController.xib in Resources */,
+				02FB6FAF18F7B2C1003F55E0 /* launch320_480.png in Resources */,
 				02CA641518F423E200D6E32A /* 10.png in Resources */,
 				02CA642218F423E200D6E32A /* 4.png in Resources */,
 				02CA641918F423E200D6E32A /* 14.png in Resources */,
 				02CA642918F423E200D6E32A /* spy@2x.png in Resources */,
 				02CA641A18F423E200D6E32A /* 15.png in Resources */,
+				02FB6FAD18F7B210003F55E0 /* Icon57.png in Resources */,
 				02CA642018F423E200D6E32A /* 20.png in Resources */,
 				02FB6FA318F79F24003F55E0 /* Icon58.png in Resources */,
 				02CA63B818F41FF000D6E32A /* InfoPlist.strings in Resources */,
@@ -473,6 +488,7 @@
 				02CA63C018F41FF000D6E32A /* Images.xcassets in Resources */,
 				02CA63F518F420CF00D6E32A /* GamePlayingViewController.xib in Resources */,
 				02CA642818F423E200D6E32A /* goodguy@2x.png in Resources */,
+				02FB6FAC18F7B210003F55E0 /* Icon29.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

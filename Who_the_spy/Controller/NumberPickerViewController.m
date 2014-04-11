@@ -100,7 +100,7 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%i人", self.startNum+indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%i人", (int)(self.startNum+indexPath.row)];
     if(self.selectedRowIndex == indexPath.row)
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     else
@@ -111,7 +111,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedRowIndex = indexPath.row;
+    self.selectedRowIndex = (int)indexPath.row;
     [tableView reloadData];
     
 //    if(self.delegate && [self.delegate respondsToSelector:@selector(didSelectNumber:)])

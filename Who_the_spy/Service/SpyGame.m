@@ -142,7 +142,7 @@
     {
         if(playerIndex < 0 || playerIndex >= self.playersAliveArray.count)
         {
-            NSLog(@"Error playerIndex in killPlayerAtIndex (%d/%d)", playerIndex, self.playersAliveArray.count);
+            NSLog(@"Error playerIndex in killPlayerAtIndex (%i/%i)", playerIndex, (int)self.playersAliveArray.count);
             return nil;
         }
         killedPlayer = [self.playersAliveArray objectAtIndex:playerIndex];
@@ -200,7 +200,7 @@
 
 - (int)playersAliveNum
 {
-    return self.playersAliveArray.count;
+    return (int)self.playersAliveArray.count;
 }
 
 - (int)spyAliveNum

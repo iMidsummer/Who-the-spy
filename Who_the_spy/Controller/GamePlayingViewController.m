@@ -234,7 +234,7 @@ typedef enum
             UITableViewCell * nextCheckCell = [tableView cellForRowAtIndexPath:indexPath];
             lastCheckedCell.accessoryType = UITableViewCellAccessoryNone;
             nextCheckCell.accessoryType = UITableViewCellAccessoryCheckmark;
-            self.curSelectedToKillPlayerIndex = indexPath.row;
+            self.curSelectedToKillPlayerIndex = (int)indexPath.row;
         }
         
         Player * player = [[self.spyGame alivePlayersInfo] objectAtIndex:self.curSelectedToKillPlayerIndex];
@@ -268,7 +268,7 @@ typedef enum
     {
         if(editingStyle == UITableViewCellEditingStyleDelete)
         {
-            Player * killedPlayer = [self.spyGame killPlayerAtIndex:indexPath.row];
+            Player * killedPlayer = [self.spyGame killPlayerAtIndex:(int)indexPath.row];
             
             if(killedPlayer.role == PR_Civilian)
             {
@@ -280,6 +280,7 @@ typedef enum
                     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
                 else
                     [tableView reloadData];
+                [self.playerListTableView setContentOffset:CGPointMake(0, 0) animated:YES];
             }
             else
             {
@@ -323,6 +324,7 @@ typedef enum
                 self.notifyLable.text = notify;
                 self.curSelectedToKillPlayerIndex = -1;
                 [self.playerListTableView reloadData];
+                [self.playerListTableView setContentOffset:CGPointMake(0, 0) animated:YES];
             }
             else
             {
@@ -343,6 +345,7 @@ typedef enum
     self.notifyLable.text = notify;
     self.curSelectedToKillPlayerIndex = -1;
     [self.playerListTableView reloadData];
+    [self.playerListTableView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 #pragma -mark interaction

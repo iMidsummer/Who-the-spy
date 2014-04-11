@@ -53,6 +53,7 @@
     self.promptLabel.text = [self promptString:self.killedPlayer];
     self.navigationItem.title = @"猜词";
     self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"放弃" style:UIBarButtonItemStylePlain target:self action:@selector(giveUpGuessing:)];
     
     UIColor * backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"vc_bg.png"]];
     [self.view setBackgroundColor:backgroundColor];
@@ -73,6 +74,14 @@
         promptStr = [NSString stringWithFormat:@"%i号是白板!", player.ID];
     promptStr = [promptStr stringByAppendingString:[NSString stringWithFormat:@"还有%i次机会", self.numOfChances]];
     return promptStr;
+}
+
+- (void)giveUpGuessing:(id)sender
+{
+    [self.spyGame updateGameState];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(didEndGuessing:IsSelfExposure:)])
+        [self.delegate didEndGuessing:self.killedPlayer IsSelfExposure:self.isSelfExposure];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

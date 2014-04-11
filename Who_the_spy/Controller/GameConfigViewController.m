@@ -100,7 +100,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.selectedRowIndex = indexPath.row;
+    self.selectedRowIndex = (int)indexPath.row;
     int min = [[self.rangeDict[@"min"] objectAtIndex:indexPath.row] intValue];
     int max = [[self.rangeDict[@"max"] objectAtIndex:indexPath.row] intValue];
     int initSelected = [[self.configDict[@"values"] objectAtIndex:indexPath.row] intValue];
