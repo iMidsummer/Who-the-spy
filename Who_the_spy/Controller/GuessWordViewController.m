@@ -16,6 +16,7 @@
 @property (nonatomic, strong) IBOutlet UITextField * textFiled;
 @property (nonatomic, weak) SpyGame * spyGame;
 @property (nonatomic, strong) Player * killedPlayer;
+@property (nonatomic, assign) BOOL isSelfExposure;
 @property (nonatomic, assign) int numOfChances;
 
 - (IBAction)onGuessBtnClicked:(id)sender;
@@ -33,12 +34,13 @@
     return self;
 }
 
-- (id)initWithPlayer:(Player *)killedPlayer NumofChances:(int)num SpyGame:(SpyGame *)spyGame
+- (id)initWithPlayer:(Player *)killedPlayer IsSelfExposure:(BOOL)isSelfExposure SpyGame:(SpyGame *)spyGame
 {
     if(self = [super init])
     {
         self.killedPlayer = killedPlayer;
-        self.numOfChances = num;
+        self.isSelfExposure = isSelfExposure;
+        self.numOfChances = self.isSelfExposure?2:1;
         self.spyGame = spyGame;
     }
     return self;
@@ -89,8 +91,8 @@
         {
             [self.spyGame updateGameState];
             
-            if(self.delegate && [self.delegate respondsToSelector:@selector(didEndGuessing)])
-               [self.delegate didEndGuessing];
+            if(self.delegate && [self.delegate respondsToSelector:@selector(didEndGuessing:IsSelfExposure:)])
+                [self.delegate didEndGuessing:self.killedPlayer IsSelfExposure:self.isSelfExposure];
             
             [self.navigationController popViewControllerAnimated:YES];
         }

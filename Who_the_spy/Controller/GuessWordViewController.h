@@ -8,18 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol GuessWordDelegate <NSObject>
-@optional
-- (void)didEndGuessing;
-@end
 
 @class Player;
 @class SpyGame;
+
+@protocol GuessWordDelegate <NSObject>
+@optional
+- (void)didEndGuessing:(Player *)player IsSelfExposure:(BOOL)isSelfExposure;
+@end
 
 @interface GuessWordViewController : UIViewController
 
 @property (nonatomic, weak) id<GuessWordDelegate> delegate;
 
-- (id)initWithPlayer:(Player *)killedPlayer NumofChances:(int)num SpyGame:(SpyGame *)spyGame;
+- (id)initWithPlayer:(Player *)killedPlayer IsSelfExposure:(BOOL)isSelfExposure SpyGame:(SpyGame *)spyGame;
 
 @end

@@ -53,7 +53,7 @@
     //select a word pair
     NSArray * wordPairs = [[DataManager sharedManager] wordPairs];
     int pairIndex = arc4random() % [wordPairs count];
-    pairIndex = 0;
+    //pairIndex = 0;
     WordPair * selectedWordPair = wordPairs[pairIndex];
     
     //decide spy and civilian words
@@ -124,6 +124,17 @@
     return  word;
 }
 
+- (int)pickOnePlayerToStart
+{
+    while(true)
+    {
+        int index = arc4random() % self.totalPlayerNum;
+        Player * player = [self.allPlayers objectAtIndex:index];
+        if(player.role != PR_WhiteBoard)
+            return player.ID;
+    }
+}
+
 - (Player *)killPlayerAtIndex:(int)playerIndex
 {
     Player * killedPlayer = nil;
@@ -163,11 +174,11 @@
 
 - (void)updateGameState
 {
-  if(self.gameState != SG_Win || self.gameState != SG_Failed)
+  if(self.gameState == SG_Killing)
   {
       if((self.spyLeftNum + self.whiteBoardNum) == 0)
           self.gameState = SG_Win;
-      if(self.civilianLeftNum < 0 ||(self.spyLeftNum + self.whiteBoardLeftNum + self.civilianLeftNum) <= self.loseNum)
+      else if(self.civilianLeftNum < 0 ||(self.spyLeftNum + self.whiteBoardLeftNum + self.civilianLeftNum) <= self.loseNum)
           self.gameState = SG_Failed;
   }
 }

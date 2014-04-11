@@ -27,7 +27,6 @@ typedef enum
 @property (nonatomic, strong) SpyGame * spyGame;
 @property (nonatomic, assign) int curPreviewPlayIndex;
 @property (nonatomic, assign) int curSelectedToKillPlayerIndex;
-@property (nonatomic, strong) Player * lastSelfExposurePlayer;
 
 - (IBAction)onShowWordBtnClicked:(id)sender;
 
@@ -105,7 +104,7 @@ typedef enum
         self.navigationItem.title = @"票出玩家";
         [self.playerListTableView setHidden:NO];
         [self.previewWordView setHidden:YES];
-        self.notifyLable.text = [NSString stringWithFormat:@"   请选择被投票最多的玩家"];
+        self.notifyLable.text = [NSString stringWithFormat:@"   从%i号玩家开始发言~", [self.spyGame pickOnePlayerToStart]];
         self.curSelectedToKillPlayerIndex = -1;
         [self.playerListTableView reloadData];
     }
@@ -118,14 +117,20 @@ typedef enum
     NSString * notifyString;
     
     if(killedPlayer.role == PR_Civilian)
+    {
         if(isSelfExposure)
             notifyString = [NSString stringWithFormat:@"   %i号是犯2群众!", killedPlayer.ID];
         else
             notifyString = [NSString stringWithFormat:@"   %i号被冤死!", killedPlayer.ID];
+    }
     else if(killedPlayer.role == PR_WhiteBoard)
+    {
             notifyString = [NSString stringWithFormat:@"   %i号是白板!", killedPlayer.ID];
+    }
     else
+    {
         notifyString = [NSString stringWithFormat:@"   %i号是卧底!", killedPlayer.ID];
+    }
     
     GameState state = [self.spyGame currentGameState];
     if(state == SG_Killing)
@@ -263,7 +268,6 @@ typedef enum
         if(editingStyle == UITableViewCellEditingStyleDelete)
         {
             Player * killedPlayer = [self.spyGame killPlayerAtIndex:indexPath.row];
-            self.lastSelfExposurePlayer = killedPlayer;
             
             if(killedPlayer.role == PR_Civilian)
             {
@@ -279,18 +283,12 @@ typedef enum
             else
             {
                 [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+                
+                GuessWordViewController * guessWordController = [[GuessWordViewController alloc] initWithPlayer:killedPlayer IsSelfExposure:YES SpyGame:self.spyGame];
+                guessWordController.delegate = self;
+                [self.navigationController pushViewController:guessWordController animated:YES];
             }
         }
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(self.lastSelfExposurePlayer && self.lastSelfExposurePlayer.role != PR_Civilian)
-    {
-        GuessWordViewController * guessWordController = [[GuessWordViewController alloc] initWithPlayer:self.lastSelfExposurePlayer NumofChances:2 SpyGame:self.spyGame];
-        guessWordController.delegate = self;
-        [self.navigationController pushViewController:guessWordController animated:YES];
     }
 }
 
@@ -323,7 +321,7 @@ typedef enum
             else
             {
                 //guess word one time
-                GuessWordViewController * guessWordController = [[GuessWordViewController alloc] initWithPlayer:killedPlayer NumofChances:1 SpyGame:self.spyGame];
+                GuessWordViewController * guessWordController = [[GuessWordViewController alloc] initWithPlayer:killedPlayer IsSelfExposure:NO SpyGame:self.spyGame];
                 guessWordController.delegate = self;
                 [self.navigationController pushViewController:guessWordController animated:YES];
             }
@@ -333,9 +331,9 @@ typedef enum
 }
 
 #pragma -mark GuessWord controller delegate
-- (void)didEndGuessing
+- (void)didEndGuessing:(Player *)player IsSelfExposure:(BOOL)isSelfExposure
 {
-    NSString * notify = [self notificationForKilledPlayer:self.lastSelfExposurePlayer IsSelfExposure:YES];
+    NSString * notify = [self notificationForKilledPlayer:player IsSelfExposure:isSelfExposure];
     self.notifyLable.text = notify;
     self.curSelectedToKillPlayerIndex = -1;
     [self.playerListTableView reloadData];
